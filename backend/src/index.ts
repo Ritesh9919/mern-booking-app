@@ -3,6 +3,8 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 
+import userRouter from "./routes/users";
+
 mongoose.connect(process.env.MONGO_URI as string);
 
 const app = express();
@@ -11,9 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/api/test", (req: Request, res: Response) => {
-  res.send("Hello World");
-});
+app.use("/api/users", userRouter);
 
 app.listen(7000, () => {
   console.log(`Server is running on port:7000`);
