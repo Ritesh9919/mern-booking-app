@@ -51,4 +51,9 @@ router.get("/validate-token", verifyToken, (req: Request, res: Response) => {
   return res.status(200).json({ userId: req.userId });
 });
 
+router.post("/logout", (req: Request, res: Response) => {
+  res.cookie("auth_token", "", { expires: new Date(0) });
+  res.send();
+});
+
 export default router;
