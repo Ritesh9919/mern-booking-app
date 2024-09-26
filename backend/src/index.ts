@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import path from "path";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
@@ -19,6 +20,8 @@ app.use(
   })
 );
 app.use(cookieParser());
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
