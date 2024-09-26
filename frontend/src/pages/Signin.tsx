@@ -66,7 +66,7 @@ function Signin() {
         <span className="text-sm">
           Not registered?{" "}
           <Link className="underline" to="/register">
-            Create a Account here
+            Create an account here
           </Link>
         </span>
         <button
