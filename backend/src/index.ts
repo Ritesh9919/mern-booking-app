@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth";
 import userRouter from "./routes/users";
+import myHotelRouter from "./routes/my-hotels";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/my-hotels", myHotelRouter);
 
 app.listen(7000, () => {
   console.log(`Server is running on port:7000`);
