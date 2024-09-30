@@ -84,4 +84,38 @@ router.get("/:id", verifyToken, async (req: Request, res: Response) => {
   }
 });
 
+router.put(
+  "/:hotelId",
+  verifyToken,
+  upload.array("imageFiles", 6),
+  async (req: Request, res: Response) => {
+    try {
+      const updatedHotel: HotelType = req.body;
+      updatedHotel.lastUpdated = new Date();
+      const hotel = await Hotel.findOneAndUpdate(
+        { _id: req.params.hotelId, userId: req.userId },
+        updatedHotel,
+        { new: true }
+      );
+      if (!hotel) {
+        return res.status(404).json({ message: "Hotel not found" });
+      }
+      const imageFiles = req.files as Express.Multer.File[];
+      const uploadPromises = imageFiles.map(async (image) => {
+        const b64 = Buffer.from(image.buffer).toString("base64");
+        let dataURI = "data:" + image.mimetype + ";base64," + b64;
+        const res = await cloudinary.uploader.upload(dataURI);
+        return res.url;
+      });
+
+      const updatedImageUrls = await Promise.all(uploadPromises);
+      hotel.imageUrls = [...updatedImageUrls];
+      await hotel.save();
+      return res.status(200).json(hotel);
+    } catch (error) {
+      return res.status(200).json({ message: "Something went wrong!" });
+    }
+  }
+);
+
 export default router;
