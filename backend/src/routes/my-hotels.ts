@@ -109,10 +109,14 @@ router.put(
       });
 
       const updatedImageUrls = await Promise.all(uploadPromises);
-      hotel.imageUrls = [...updatedImageUrls];
+      hotel.imageUrls = [
+        ...updatedImageUrls,
+        ...(updatedHotel.imageUrls || []),
+      ];
       await hotel.save();
       return res.status(200).json(hotel);
     } catch (error) {
+      console.log(error);
       return res.status(200).json({ message: "Something went wrong!" });
     }
   }
