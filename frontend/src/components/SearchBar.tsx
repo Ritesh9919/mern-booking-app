@@ -37,7 +37,7 @@ function SearchBar() {
       <div className="flex flex-row items-center flex-1 bg-white p-2">
         <MdTravelExplore size={25} className="mr-2" />
         <input
-          placeholder="Where are you going:"
+          placeholder="Where are you going?"
           className="text-md w-full"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
