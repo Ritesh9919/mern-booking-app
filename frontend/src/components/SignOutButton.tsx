@@ -11,7 +11,7 @@ function SignOutButton() {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
       showToast({ message: "Sign out", type: "SUCCESS" });
-      navigate("/sign-in");
+      navigate("/");
     },
     onError: (error: Error) => {
       showToast({ message: error.message, type: "ERROR" });

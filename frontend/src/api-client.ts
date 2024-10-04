@@ -147,3 +147,11 @@ export const searchHotels = async (
   }
   return res.json();
 };
+
+export const fetchHotelById = async (hotelId: string): Promise<HotelType> => {
+  const res = await fetch(`${API_BASE_URL}/api/hotels/${hotelId}`);
+  if (!res.ok) {
+    throw new Error("Error feching hotel");
+  }
+  return res.json();
+};
