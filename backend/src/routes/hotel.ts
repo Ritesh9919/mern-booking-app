@@ -132,7 +132,7 @@ router.post(
       //       message: `Payment intent not succeeded. Status: ${paymentIntent.status}`,
       //     });
       //   }
-      console.log(req.body);
+
       const newBooking: BookingType = {
         ...req.body,
         userId: req.userId,

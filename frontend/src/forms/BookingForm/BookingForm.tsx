@@ -1,8 +1,5 @@
 import { useForm } from "react-hook-form";
-import {
-  PaymentIntentResponse,
-  UserType,
-} from "../../../../backend/src/shared/types";
+import { UserType } from "../../../../backend/src/shared/types";
 // import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 // import { StripeCardElement } from "@stripe/stripe-js";
 import { useSearchContext } from "../../contexts/SearchContext";
@@ -76,7 +73,7 @@ const BookingForm = ({ currentUser, price }: Props) => {
     //   },
     // });
     // console.log(result);
-    console.log(formData);
+
     bookRoom(formData);
   };
 
