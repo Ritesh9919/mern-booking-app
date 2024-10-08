@@ -3,6 +3,20 @@ const router = express.Router();
 import { User } from "../models/user";
 import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
+import { verifyToken } from "../middlewares/auth";
+
+router.get("/me", verifyToken, async (req: Request, res: Response) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not fount" });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+});
 
 router.post(
   "/register",
