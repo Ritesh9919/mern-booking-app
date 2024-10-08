@@ -5,8 +5,6 @@ import { useSearchContext } from "../contexts/SearchContext";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BookingDetailsSummary from "../components/BookingDetailSummary";
-import { Elements } from "@stripe/react-stripe-js";
-import { useAppContext } from "../contexts/AppContext";
 
 const Booking = () => {
   // const { stripePromise } = useAppContext();
