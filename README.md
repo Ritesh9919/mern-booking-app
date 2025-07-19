@@ -8,6 +8,7 @@ A full-fledged Booking App using the MERN stack!
 
 React.js, Tailwind CSS, React-Hook-Form, React-Query, Node.js, MongoDB
 
+
 ## 📦 Setup Instructions
 
 ### 1. Run backend
