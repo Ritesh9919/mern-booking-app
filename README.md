@@ -19,7 +19,7 @@ React.js, Tailwind CSS, React-Hook-Form, React-Query, Node.js, MongoDB
 4. npm run dev
 ```
 
-### 1. Run frontend
+### 2. Run frontend
 
 ```bash
 1. git clone https://github.com/Ritesh9919/mern-booking-app
